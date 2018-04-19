@@ -1,0 +1,36 @@
+package T3;
+
+import java.util.Vector;
+
+public class consumer extends Thread {
+	Vector buffer;
+
+	public consumer (Vector buffer) {
+	this.buffer = buffer;
+	}
+
+	public void run() {
+		while(true) {
+			
+				if(buffer.size()==0) {
+					
+					try {
+						buffer.wait();
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+					
+				
+				
+					buffer.remove(buffer.firstElement());
+					buffer.notify();
+					System.out.println("Consuma "+buffer.firstElement());
+			}
+		}
+	}
+}
+	
+
+
