@@ -1,0 +1,27 @@
+ackage T3;
+
+import java.util.Vector;
+
+import T3.consumer;
+import T3.producer;
+
+public class main {
+public static void main (String args[]) {
+		
+
+		Vector buffer;
+		int max=10;
+		
+		
+		buffer = new Vector(max);
+		for(int i=0; i<=max-1; i++)
+		buffer.addElement(i);
+		producer prod = new producer(buffer, max);
+		consumer cons = new consumer(buffer);
+
+		
+
+		cons.start();
+		prod.start();
+		}
+}
