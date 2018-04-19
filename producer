@@ -1,0 +1,34 @@
+package T3;
+
+import java.util.Vector;
+
+public class producer extends Thread {
+	Vector buffer;
+	int max;
+	int id = 0;
+
+	public producer(Vector buffer, int max) {
+		this.max = max;
+		this.buffer = buffer;
+	}
+
+	public void run() {
+		while (true) {
+			try {
+				if (buffer.size() == max) {
+					buffer.wait();
+
+					
+
+				} 
+				System.out.println("Produce " + id);
+				buffer.addElement(id);
+				id++;
+				buffer.notify();
+			} catch (Exception e) {
+			}
+			
+		}
+	}
+
+}
